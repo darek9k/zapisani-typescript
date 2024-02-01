@@ -1,0 +1,25 @@
+{
+  "name": "zapisani-typescript",
+  "version": "1.0.0",
+  "description": "Testy ze strony zapisani w typescript / cypress",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/darek9k/zapisani-typescript.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/darek9k/zapisani-typescript/issues"
+  },
+  "homepage": "https://github.com/darek9k/zapisani-typescript#readme",
+  "devDependencies": {
+    "@types/cypress": "^1.1.3",
+    "cypress": "^13.6.4",
+    "typescript": "^5.3.3"
+  }
+}
