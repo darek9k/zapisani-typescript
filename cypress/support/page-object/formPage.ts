@@ -32,11 +32,11 @@ class FormPage {
   }
   
   clickCashBtn(){
-    cy.get('[test-id="btn-cash"]')
+    cy.get('[test-id="btn-cash"]', { timeout: 10000 }).should('be.visible').click();
   }
 
   clickEndBtn(){
-    cy.get("button[type='button']").contains("Zakończ").click()
+    cy.get("button[type='button']").eq(1).click();
   }
 
   fillFormWithTestData() {
@@ -52,9 +52,23 @@ class FormPage {
   }
   selectRadioBtn() {
     cy.get('div.form-check input[type="radio"]').then($checkboxes => {
-        const randomIndex = Math.floor(Math.random() * $checkboxes.length)
-        cy.wrap($checkboxes[randomIndex]).check()
-      })
+      const lastIndex = $checkboxes.length - 1;
+      const randomIndex = Math.floor(Math.random() * lastIndex);
+      $checkboxes.each((index, checkbox) => {
+        if (index === randomIndex && index !== lastIndex) {
+          cy.wrap(checkbox).check();
+        }
+      });
+    });
+  }
+  checkingSukces() {
+    cy.wait(5000)
+    cy.get('#show-info').should('exist');
+  }
+  selectingCash() {
+    cy.url().should('include', '/platnosc');
+    this.clickCashBtn();
+    cy.get('[test-id="registration-button"]').click();
   }
 }
 
